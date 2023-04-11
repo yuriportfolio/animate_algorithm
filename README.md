@@ -10,8 +10,9 @@ One of the ways to generate a video is to run the Motion Canvas tool and then re
 npm run serve
 ``` 
 
-Then run the following command to generate the video.
+Then run the following commands in the project's folder to generate the video.
 
 ```shellscript
+rm -rf output/project/*
 ffmpeg -framerate 60 -i output/project/%06d.png -c:a copy -shortest -c:v libx264 -pix_fmt yuv420p ./test.mp4
 ```
