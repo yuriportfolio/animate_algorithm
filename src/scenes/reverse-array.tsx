@@ -168,10 +168,16 @@ Rect.prototype.moveVertically = function* (direction: Direction) {
 
   switch (direction) {
     case Direction.Up:
-      yield* this.animate(this.position.x(), this.position.y() - moveDistance);
+      yield* this.moveToPosition(
+        this.position.x(),
+        this.position.y() - moveDistance
+      );
       break;
     case Direction.Down:
-      yield* this.animate(this.position.x(), this.position.y() + moveDistance);
+      yield* this.moveToPosition(
+        this.position.x(),
+        this.position.y() + moveDistance
+      );
       break;
     default:
       throw new Error("Invalid direction");
@@ -192,5 +198,5 @@ Rect.prototype.moveHorizontally = function* (
     sign *
       (SceneConfig.rectSize + SceneConfig.rectGap) *
       (unitCount - (1 + currentUnit));
-  yield* this.animate(targetX, this.position.y());
+  yield* this.moveToPosition(targetX, this.position.y());
 };
